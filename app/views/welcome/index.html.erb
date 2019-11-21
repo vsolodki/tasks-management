@@ -1,9 +1,10 @@
 <h1>Welcome#index</h1>
 <p>Find me in app/views/welcome/index.html.erb</p>
-<%= simple_form_for @user do |f| %>
-  <%= f.input :username, label: 'Your username please', error: 'Username is mandatory, please specify one' %>
-  <%= f.input :password, hint: 'No special characters.' %>
-  <%= f.input :email, placeholder: 'user@domain.com' %>
-  <%= f.input :remember_me, inline_label: 'Yes, remember me' %>
-  <%= f.button :submit %>
-<% end %>
+<%= simple_form_for @user, url: examples_vertical_path do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :name %>
+
+  <%= f.input :email, input_html: { autocomplete: 'email' } %>
+
+  <%= f.input :password, input_html: { autocomplete: 'current-password' } %>

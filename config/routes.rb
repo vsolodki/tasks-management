@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   resources :tags
   resources :categories
-  devise_for :users
   resources :tag_associations
   resources :tasks
-  resources :users
   get 'welcome/index'
-
+  devise_for :users, controllers: {
+      sessions: 'users/sessions',
+      registrations: 'users/registrations',
+      passwords: 'users/passwords'
+  }
   root 'welcome#index'
 end

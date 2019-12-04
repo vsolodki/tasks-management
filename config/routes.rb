@@ -9,5 +9,5 @@ Rails.application.routes.draw do
       registrations: 'users/registrations',
       passwords: 'users/passwords'
   }
-  root to: 'home#index'
+  root 'welcome#index'
 end

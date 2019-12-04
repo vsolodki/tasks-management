@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
-    @category = Category.new
+    @category = Category.new(user: current_user)
   end
 
   # GET /categories/1/edit
@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.json
   def create
-    @category = Category.new(category_params)
+    @category = Category.new(category_params.merge(user: current_user))
 
     respond_to do |format|
       if @category.save

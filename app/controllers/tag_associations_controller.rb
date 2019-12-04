@@ -14,7 +14,7 @@ class TagAssociationsController < ApplicationController
 
   # GET /tag_associations/new
   def new
-    @tag_association = TagAssociation.new
+    @tag_association = TagAssociation.new(user: current_user)
   end
 
   # GET /tag_associations/1/edit
@@ -24,7 +24,7 @@ class TagAssociationsController < ApplicationController
   # POST /tag_associations
   # POST /tag_associations.json
   def create
-    @tag_association = TagAssociation.new(tag_association_params)
+    @tag_association = TagAssociation.new(tag_association_params.merge(user: current_user))
 
     respond_to do |format|
       if @tag_association.save

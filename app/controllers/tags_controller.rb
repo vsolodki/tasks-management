@@ -14,7 +14,7 @@ class TagsController < ApplicationController
 
   # GET /tags/new
   def new
-    @tag = Tag.new
+    @tag = Tag.new(user: current_user)
   end
 
   # GET /tags/1/edit
@@ -24,7 +24,7 @@ class TagsController < ApplicationController
   # POST /tags
   # POST /tags.json
   def create
-    @tag = Tag.new(tag_params)
+    @tag = Tag.new(tag_params.merge(user: current_user))
 
     respond_to do |format|
       if @tag.save

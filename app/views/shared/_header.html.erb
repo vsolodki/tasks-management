@@ -1,39 +1,36 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark primary-color">
-    <button type="button" class="btn btn-light"><a class="navbar-brand"><%= link_to 'Home', root_path %></a></button>
 
-    <div class="collapse navbar-collapse" id="basicExampleNav">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
-            <button type="button" class="btn btn-light"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= link_to 'Categories', categories_path %>
-            </a></button>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item">
-                <%= link_to 'Create', new_category_path %>
-              </a>
-              <a class="dropdown-item">
-                <%= link_to 'Show categories', categories_path %>
-              </a>
-            </div>
-          </li>
-            </ul>
-          <li class="nav-item">
-            <button type="button" class="btn btn-light"><%= link_to 'Tasks', tasks_path %></button>
-          </li>
-          <li class="nav-item">
-            <button type="button" class="btn btn-light"><%= link_to 'Tags', tags_path %></button>
-          </li>
-          <li>
-            <button type="button" class="btn btn-light"><%= link_to 'Account Settings', edit_user_registration_path %></button>
-          </li>
-          <li>
-            <button type="button" class="btn btn-light"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></button>
-          </li>
-        </ul>
-      </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Tasks Management</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/categories">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tasks">Tasks</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tags">Tags</a>
+        </li>
+      </ul>
+      <span>Hello,</span><a href="/" <%= current_user.email %>
+      <button type="button" class="btn btn-info"><%= link_to 'Account Settings', edit_user_registration_path %></button>
+      <button type="button" class="btn btn-info"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></button>
+      <form class="form-inline my-2 my-lg-0">
+        <label>
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        </label>
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
   </nav>
-
-
 
 </header>

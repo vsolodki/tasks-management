@@ -7,7 +7,7 @@
 
 <p>
   <strong>Color:</strong>
-  <%= @tag.color%>
+  <%= @tag.color as: :color_field_tag%>
 </p>
 
 <%= link_to 'Edit', edit_tag_path(@tag) %> |

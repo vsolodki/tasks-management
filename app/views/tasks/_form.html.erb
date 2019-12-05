@@ -13,7 +13,7 @@
 
     <%= f.input :is_done %>
 
-    <%= f.association :user.id2name %>
+    <%= f.association :user %>
     <%= f.association :category %>
     <%= f.association :tags, through: :tag_associations %>
 

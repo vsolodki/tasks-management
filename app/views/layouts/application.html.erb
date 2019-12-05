@@ -13,36 +13,12 @@
 
   <body>
 
-  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-
     <% if user_signed_in? %>
-
-
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <%= link_to 'Home', root_path %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Categories', categories_path %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Tags', tags_path %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Tasks', tasks_path %>
-            </li>
-          </ul>
-        </div>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-
-        <button type="button" class="btn btn-light"><%= link_to 'Account Settings', edit_user_registration_path %></button>
-        <button type="button" class="btn btn-light"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></button>
-      </nav>
+    <%= render 'shared/header' %>
+  <div>
+    <h1>  Hello, welcome to your Task Management application</h1>
+    <p> You can see on the top Categories, Tasks and Tags</p>
+  </div>
     <% else %>
 
       <h5 class="my-0 mr-md-auto font-weight-bold"><%= link_to 'Tasks Management', new_user_session_path %></h5>
@@ -52,7 +28,6 @@
       </nav>
 
     <% end %>
-  </div>
   <% if notice %>
     <p class="alert alert-success"><%= notice %></p>
   <% end %>

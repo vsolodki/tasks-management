@@ -21,7 +21,7 @@
           <a class="nav-link" href="/tags">Tags</a>
         </li>
       </ul>
-      <span>Hello,</span><a href="/" <%= current_user.email %>
+      <span >Hello,</span><a href="/" <%= current_user.email %>
       <button type="button" class="btn btn-info"><%= link_to 'Account Settings', edit_user_registration_path %></button>
       <button type="button" class="btn btn-info"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></button>
       <form class="form-inline my-2 my-lg-0">

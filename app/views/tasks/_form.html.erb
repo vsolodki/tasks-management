@@ -13,13 +13,12 @@
 
     <%= f.input :is_done %>
 
-    <%= f.association :user %>
     <%= f.association :category %>
     <%= f.association :tags, through: :tag_associations %>
 
   </div>
 
-  <div class="btn btn-primary">
-    <%= f.button :submit %>
+  <div class="form-inputs">
+    <%= f.button :submit, class: 'btn btn-success' %>
   </div>
 <% end %>

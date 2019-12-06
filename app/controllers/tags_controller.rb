@@ -10,6 +10,8 @@ class TagsController < ApplicationController
   # GET /tags/1
   # GET /tags/1.json
   def show
+    @tag = Tag.find_by(title: params[:id])
+    @tasks = @tag.tasks
   end
 
   # GET /tags/new

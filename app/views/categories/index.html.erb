@@ -1,13 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Categories</h1>
-
-<table class="table table-dark table-hover">
+<div>
+  <aside><p> You can see on the top Categories, Tasks and Tags</p></aside>
+</div>
+<table class="table table-hover">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Title</th>
       <th>Color</th>
       <th>Count of Tasks</th>
+      <th>Creation Date</th>
+      <th>Date of change</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,12 +20,17 @@
   <tbody>
     <% @categories.each do |category| %>
       <tr>
+        <td><%= category.id %></td>
         <td><%= category.title %></td>
-        <td><%= category.color %></td>
-        <td><%= category.tasks %></td>
+        <td><%= javascript_tag "hexToRgbA(category.color)" %>
+          <svg width="25" height="20">
+            <rect width="25" height="20" style="fill:<%= category.color %>"></rect></svg></td>
+        <td><%= category.tasks.count %></td>
+        <td><%=category.created_at %></td>
+        <td><%= category.updated_at %></td>
         <td><%= link_to 'Show', category %></td>
         <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Category', new_category_path %>
+<button type="button" class="btn btn-outline-primary"><%= link_to 'New Category', new_category_path %></button>

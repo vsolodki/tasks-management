@@ -1,12 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Tags</h1>
-
-<table class="table table-dark table-hover">
+<div>
+  <aside><p> You can see on the top Categories, Tasks and Tags</p></aside>
+</div>
+<table class="table table-hover">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Title</th>
       <th>Color</th>
+      <th>Creation Date</th>
+      <th>Date of change</th>
+      <th></th>
+      <th></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,11 +21,16 @@
   <tbody>
     <% @tags.each do |tag| %>
       <tr>
+        <td><%= tag.id %></td>
         <td><%= tag.title %></td>
-        <td><%= tag.color %></td>
+        <td><%= tag.color %> <svg width="20" height="20">
+          <rect width="20" height="20" style="fill:<%= tag.color %>" />
+        </svg></td>
+        <td><%= tag.created_at %></td>
+        <td><%= tag.updated_at %></td>
         <td><%= link_to 'Show', tag %></td>
         <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Tag', new_tag_path %>
+<button type="button" class="btn btn-outline-primary"><%= link_to 'New Tag', new_tag_path %></button>

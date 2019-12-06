@@ -29,6 +29,6 @@
   </div>
 <% end %>
 
-<button type="button" class="btn btn-danger">Danger<%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></button>
+<button type="button" class="btn btn-outline-danger"><%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></button>
 
-<button type="button" class="btn btn-link"><%= link_to "Back", :back %></button>
+<button type="button" class="btn btn-outline-info"><%= link_to "Back", :back %></button>

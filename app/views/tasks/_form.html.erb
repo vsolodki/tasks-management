@@ -14,7 +14,8 @@
     <%= f.input :is_done %>
 
     <%= f.association :category %>
-    <%= f.association :tags, through: :tag_associations %>
+
+    <%= f.association :tags, through: :tag_associations, as: :check_boxes %>
 
   </div>
 

@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :categories, dependent: :destroy
   has_many :tags, dependent: :destroy
   has_many :tasks, dependent: :destroy
+  validates :username, :email, presence: true, uniqueness: true
 end

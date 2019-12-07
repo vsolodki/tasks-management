@@ -1,30 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Deadline at:</strong>
-  <%= @task.deadline_at %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @task.title %>
-</p>
-
-<p>
-  <strong>Note:</strong>
-  <%= @task.note %>
-</p>
-
-<p>
-  <strong>Is done:</strong>
-  <%= @task.is_done %>
-</p>
-
-
-<p>
-  <strong>Category:</strong>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item"><strong>Deadline at:</strong>
+    <%= @task.deadline_at %></li>
+  <li class="list-group-item"><strong>Title:</strong>
+    <%= @task.title %></li>
+  <li class="list-group-item"><strong>Note:</strong>
+    <%= @task.note %></li>
+  <li class="list-group-item"><strong>Category:</strong>
   <%= @task.category_id %>
-</p>
+</li>
+  <li class="list-group-item"><strong>Tags:</strong>
+    <%= @task.tags %>
+  </li>
+</ul>
 
 <button type="button" class="btn btn-outline-info"><%= link_to 'Edit', edit_task_path(@task) %></button>
 

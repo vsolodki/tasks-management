@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-<div class="d-flex justify-content-center"><h1 >Tasks</h1></div>
+<div class="d-flex justify-content-center">
+  <h1>Tasks</h1>
+</div>
 <% if @tasks.any? %>
 <table class="table table-hover">
   <thead>
@@ -19,11 +21,14 @@
       <tr>
         <td><%= task.deadline_at.strftime("%B %d, %Y %H:%M") %></td>
         <td><%= task.title %></td>
-        <td><%= task.note %></td>
+        <td>
+          <% task.note %>
+        </td>
         <td><%= task.is_done %></td>
         <td>
           <%= task.tags.each do |tag| -%>
-             <%= tag.title %><% end -%>
+             <%= tag.title %>
+          <% end -%>
             </td>
         <td><%= task.category.title %></td>
         <td><%= link_to 'Show', task %></td>
@@ -31,9 +36,19 @@
 
       </tr>
     <% end %>
-    <%= will_paginate @tasks %>
+    <%#= will_paginate @tasks %>
   </tbody>
 </table>
+
+  <%= simple_form_for :search, url: tasks_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+    <%= f.input :title, input_html: {value: ""} %>
+    <%= f.submit "Search", class: "btn btn-primary" %>
+  <% end %>
+
+  <%= form_tag(tasks_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Tasks" %>
+    <%= submit_tag "Search" %>
+  <% end %>
 
 <br>
 

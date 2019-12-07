@@ -18,9 +18,10 @@
           <a class="nav-link" href="/tasks">Tasks</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/tags">Tags</a>
-        </li>
+        <a class="nav-link" href="/tags">Tags</a>
+      </li>
       </ul>
+      <span class="label label-default">Hello, </span> <button type="button" class="btn btn-outline-primary"><%= current_user.username %></button>
       <button type="button" class="btn btn-outline-primary"><%= link_to 'Account Settings', edit_user_registration_path %></button>
       <button type="button" class="btn btn-outline-primary"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></button>
     </div>

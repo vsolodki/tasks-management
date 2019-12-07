@@ -1,16 +1,21 @@
 <p id="notice"><%= notice %></p>
-<p>
-  <strong>Title:</strong>
-  <%= @category.title %>
-</p>
 
-<p>
-  <strong>Color:</strong>
-  <%= @category.color %>
-</p>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item"><strong>ID:</strong>
+    <%= @category.title %></li>
+  <li class="list-group-item"><strong>Title:</strong>
+    <%= @category.title %></li>
+  <li class="list-group-item"><strong>Color:</strong>
+    <%= ColorConverter.rgb(@category.color) %>
+    <svg width="20" height="20">
+      <rect width="20" height="20" style="fill:<%= @category.color%>" />
+    </svg>
+  </li>
+  <li class="list-group-item"><strong>Creation Date:</strong>
+    <%= @category.created_at.strftime("%B %d, %Y %H:%M") %></li>
+  <li class="list-group-item"><strong>Date of change:</strong>
+    <%= @category.updated_at.strftime("%B %d, %Y %H:%M") %></li>
+</ul>
 
-
-<%= link_to 'Tasks', tasks_path %>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<button type="button" class="btn btn-outline-info"><%= link_to 'Edit', edit_category_path(@category) %></button>
+  <button type="button" class="btn btn-outline-info"><%= link_to 'Back', categories_path %></button>

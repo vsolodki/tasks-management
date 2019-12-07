@@ -1,14 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @tag.title %>
-</p>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item"><strong>ID:</strong>
+    <%= @tag.id %></li>
+  <li class="list-group-item"><strong>Title:</strong>
+    <%= @tag.title %></li>
+  <li class="list-group-item"><strong>Color:</strong>
+    <%= ColorConverter.rgb(@tag.color) %>
+    <svg width="20" height="20">
+      <rect width="20" height="20" style="fill:<%= @tag.color%>" />
+    </svg>
+  </li>
+  <li class="list-group-item"><strong>Creation Date:</strong>
+    <%= @tag.created_at.strftime("%B %d, %Y %H:%M") %></li>
+  <li class="list-group-item"><strong>Date of change:</strong>
+    <%= @tag.updated_at.strftime("%B %d, %Y %H:%M") %></li>
+  <li class="list-group-item"><strong>Count of tasks:</strong>
+    <%= @tag.tasks.count %></li>
+</ul>
 
-<p>
-  <strong>Color:</strong>
-  <%= @tag.color%>
-</p>
-
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', tags_path %>
+<button type="button" class="btn btn-outline-info"><%= link_to 'Edit', edit_tag_path(@tag) %></button>
+  <button type="button" class="btn btn-outline-info"><%= link_to 'Back', tags_path %></button>

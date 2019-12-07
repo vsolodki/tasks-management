@@ -5,7 +5,12 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.all
+    @tasks = if params[:search]
+      Task.search(params[:search]).order("created_at DESC")
+    else
+      Task.all.order('created_at DESC')
+             end
     @tasks = Task.paginate(page: params[:page])
   end
 
@@ -28,7 +33,6 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params.merge(user: current_user))
-
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully created.' }

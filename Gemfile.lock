@@ -69,6 +69,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    color-converter (1.0.0)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
     devise (4.7.1)
@@ -222,6 +223,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  color-converter
   devise
   jbuilder (~> 2.5)
   jquery-rails

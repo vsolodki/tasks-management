@@ -1,8 +1,6 @@
 <p id="notice"><%= notice %></p>
-<h1>Tasks</h1>
-<div>
-  <aside><p> You can see on the top Categories, Tasks and Tags</p></aside>
-</div>
+<div class="d-flex justify-content-center"><h1 >Tasks</h1></div>
+<% if @tasks.any? %>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -19,7 +17,7 @@
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
-        <td><%= task.deadline_at.to_s %></td>
+        <td><%= task.deadline_at.strftime("%B %d, %Y %H:%M") %></td>
         <td><%= task.title %></td>
         <td><%= task.note %></td>
         <td><%= task.is_done %></td>
@@ -39,3 +37,7 @@
 <br>
 
 <button type="button" class="btn btn-outline-primary"><%= link_to 'New Task', new_task_path %></button>
+<%else %>
+There is not any task, you need to create one.
+<button type="button" class="btn btn-outline-primary"><%= link_to 'New Task', new_task_path %></button>
+<%end %>

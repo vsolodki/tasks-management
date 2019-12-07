@@ -5,4 +5,5 @@ class Task < ApplicationRecord
   belongs_to :user
   has_many :tag_associations, dependent: :destroy
   has_many :tags, through: :tag_associations, dependent: :destroy
+  self.per_page = 2
 end

@@ -6,6 +6,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = current_user.tasks
+    @tasks = Task.paginate(page: params[:page])
   end
 
   # GET /tasks/1

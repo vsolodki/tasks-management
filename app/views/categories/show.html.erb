@@ -2,7 +2,7 @@
 
 <ul class="list-group list-group-flush">
   <li class="list-group-item"><strong>ID:</strong>
-    <%= @category.title %></li>
+    <%= @category.id %></li>
   <li class="list-group-item"><strong>Title:</strong>
     <%= @category.title %></li>
   <li class="list-group-item"><strong>Color:</strong>
@@ -12,10 +12,17 @@
     </svg>
   </li>
   <li class="list-group-item"><strong>Creation Date:</strong>
-    <%= @category.created_at.strftime("%B %d, %Y %H:%M") %></li>
+    <%= @category.created_at.strftime("%B %d, %Y %H:%M") %>
+  </li>
   <li class="list-group-item"><strong>Date of change:</strong>
-    <%= @category.updated_at.strftime("%B %d, %Y %H:%M") %></li>
+    <%= @category.updated_at.strftime("%B %d, %Y %H:%M") %>
+  </li>
+  <li class="list-group-item"><strong>Tasks:</strong>
+    <% @category.tasks.each do |task| -%>
+      <div><%= link_to task.title, task_path(task) %></div>
+    <% end -%>
+  </li>
 </ul>
-
+<br>
 <button type="button" class="btn btn-outline-info"><%= link_to 'Edit', edit_category_path(@category) %></button>
-  <button type="button" class="btn btn-outline-info"><%= link_to 'Back', categories_path %></button>
+<button type="button" class="btn btn-outline-info"><%= link_to 'Back', categories_path %></button>

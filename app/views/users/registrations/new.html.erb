@@ -8,7 +8,8 @@
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
     <%= f.input :username,
-                required: true %>
+                required: true,
+                input_html: { autocomplete: "username" }%>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -17,8 +18,7 @@
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
   </div>
-
-  <div class="form-inputs">
+  <div class="form-actions">
     <%= f.button :submit, "Sign up", class: 'btn btn-success' %>
   </div>
 <% end %>

@@ -13,13 +13,14 @@
 
     <%= f.input :is_done %>
 
-    <%= f.association :category %>
+    <%= f.association :category, required: false %>
 
     <%= f.association :tags, through: :tag_associations %>
 
   </div>
 
-  <div class="form-inputs">
-    <%= f.button :submit, class: 'btn btn-success' %>
+  <div class="form-actions">
+    <%= f.button :magic_submit, cancel: tasks_path  %>
   </div>
+
 <% end %>

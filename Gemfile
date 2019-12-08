@@ -24,9 +24,11 @@ gem 'uglifier', '>= 1.3.0'
 gem 'bootstrap', '~> 4.3.1'
 gem 'color-converter'
 gem 'devise'
+gem 'font_awesome5_rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'simple_form'
+gem 'simple_form-magic_submit'
 gem 'will_paginate', '~> 3.1.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -53,6 +55,7 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'bullet'
+  gem 'meta_request'
   gem 'web-console', '>= 3.3.0'
 end
 

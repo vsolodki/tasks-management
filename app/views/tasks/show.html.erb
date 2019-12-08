@@ -11,10 +11,12 @@
   <%= @task.category_id %>
 </li>
   <li class="list-group-item"><strong>Tags:</strong>
-    <%= @task.tags %>
+    <% @tasks.tags.each do |tag| -%>
+      <div><%= link_to tag.title, tag_path(tag) %></div>
+    <% end -%>
   </li>
 </ul>
-
+<br>
 <button type="button" class="btn btn-outline-info"><%= link_to 'Edit', edit_task_path(@task) %></button>
-
-  <button type="button" class="btn btn-outline-info"><%= link_to 'Back', tasks_path %></button>
+<button type="button" class="btn btn-outline-info"><%= link_to 'Delete', @task,  method: :delete, data: { confirm: 'Are you sure?' } %></button>
+<button type="button" class="btn btn-outline-info"><%= link_to 'Back', tasks_path %></button>

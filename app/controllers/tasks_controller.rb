@@ -5,14 +5,11 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = current_user.tasks.all
-    @tasks = if params[:search]
-      Task.search(params[:search]).order("created_at DESC")
-    else
-      Task.all.order('created_at DESC')
-             end
+    @tasks = current_user.tasks
+    #@tasks = current_user.tasks.where("title LIKE ? OR note LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
     @tasks = Task.paginate(page: params[:page])
   end
+
 
   # GET /tasks/1
   # GET /tasks/1.json
@@ -35,7 +32,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params.merge(user: current_user))
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to tasks_url, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new }
@@ -49,7 +46,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to tasks_url notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
@@ -76,6 +73,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:deadline_at, :title, :note, :is_done, :user_id, :category_id, :tag_id)
+      params.require(:task).permit(:deadline_at, :title, :note, :is_done, :user_id, :category_id, :tag_id, :tag_ids => [ ])
     end
 end

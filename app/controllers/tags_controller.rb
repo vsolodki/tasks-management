@@ -4,7 +4,7 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.order('tags.title ASC').all
+    @tags = current_user.tags.order(title: :ASC)
   end
 
   # GET /tags/1
@@ -29,7 +29,7 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       if @tag.save
-        format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
+        format.html { redirect_to tags_url, notice: 'Tag was successfully created.' }
         format.json { render :show, status: :created, location: @tag }
       else
         format.html { render :new }
@@ -38,12 +38,13 @@ class TagsController < ApplicationController
     end
   end
 
+
   # PATCH/PUT /tags/1
   # PATCH/PUT /tags/1.json
   def update
     respond_to do |format|
       if @tag.update(tag_params)
-        format.html { redirect_to @tag, notice: 'Tag was successfully updated.' }
+        format.html { redirect_to tags_url, notice: 'Tag was successfully updated.' }
         format.json { render :show, status: :ok, location: @tag }
       else
         format.html { render :edit }
@@ -70,6 +71,6 @@ class TagsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tag_params
-      params.require(:tag).permit(:title, :color)
+      params.require(:tag).permit(:title, :color, :task_ids => [ ])
     end
 end

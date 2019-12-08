@@ -9,19 +9,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  before_filter :configure_permitted_parameters
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-      user_params.permit(:username,
-                         :email, :password, :password_confirmation)
-    end
-    devise_parameter_sanitizer.permit(:account_update) do |user_params|
-      user_params.permit( :username,
-                         :email, :password, :password_confirmation, :avatar)
-    end
-  end
-
   # POST /resource
   # def create
   #   super

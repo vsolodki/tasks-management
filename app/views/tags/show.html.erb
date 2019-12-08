@@ -17,7 +17,12 @@
     <%= @tag.updated_at.strftime("%B %d, %Y %H:%M") %></li>
   <li class="list-group-item"><strong>Count of tasks:</strong>
     <%= @tag.tasks.count %></li>
+  <li class="list-group-item"><strong>Tasks:</strong>
+    <% @tag.tasks.each do |task| -%>
+      <div><%= link_to task.title, task_path(task) %></div>
+    <% end -%>
+  </li>
 </ul>
-
+<br>
 <button type="button" class="btn btn-outline-info"><%= link_to 'Edit', edit_tag_path(@tag) %></button>
-  <button type="button" class="btn btn-outline-info"><%= link_to 'Back', tags_path %></button>
+<button type="button" class="btn btn-outline-info"><%= link_to 'Back', tags_path %></button>

@@ -3,15 +3,18 @@
   <h1>Tasks</h1>
 </div>
 <% if @tasks.any? %>
-<table class="table table-hover">
+<h4>Search tasks:</h4>
+  <label for="searching_tasks"><input type="search" id="searching_tasks" onkeyup="searchTable()" class="form-control"></label>
+  <button type="button" class="btn btn-outline-primary"><%= link_to 'Back', tasks_path %></button>
+  <table class="table table-hover" id="tasks">
   <thead>
     <tr>
-      <th>Deadline at</th>
+      <th onclick="sortTable(0)">Deadline at (click to sort by)</th>
       <th>Title</th>
       <th>Note</th>
       <th>Is done</th>
-      <th>Tags</th>
-      <th>Category</th>
+      <th onclick="sortTable(1)">Tags (click to sort by)</th>
+      <th onclick="sortTable(2)">Category (click to sort by)</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,38 +25,27 @@
         <td><%= task.deadline_at.strftime("%B %d, %Y %H:%M") %></td>
         <td><%= task.title %></td>
         <td>
-          <% task.note %>
+          <%= task.note != "" ? "Yes" : "No" %>
         </td>
-        <td><%= task.is_done %></td>
+        <td><%= task.is_done == true ? "Yes" : "No" %></td>
         <td>
-          <%= task.tags.each do |tag| -%>
-             <%= tag.title %>
+          <% task.tags.each do |tag| -%>
+            <div><%= tag.title %></div>
           <% end -%>
             </td>
-        <td><%= task.category.title %></td>
+        <td><%= if task.category != nil then link_to task.category.title, category_path(task.category) else "No" end%></td>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
-
+        <td></td>
       </tr>
     <% end %>
-    <%#= will_paginate @tasks %>
+    <%= will_paginate @tasks %>
   </tbody>
 </table>
-
-  <%= simple_form_for :search, url: tasks_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-    <%= f.input :title, input_html: {value: ""} %>
-    <%= f.submit "Search", class: "btn btn-primary" %>
-  <% end %>
-
-  <%= form_tag(tasks_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Tasks" %>
-    <%= submit_tag "Search" %>
-  <% end %>
-
 <br>
 
 <button type="button" class="btn btn-outline-primary"><%= link_to 'New Task', new_task_path %></button>
 <%else %>
-There is not any task, you need to create one.
+  <div class="d-flex justify-content-center">There is not any task, you need to create one.</div>
 <button type="button" class="btn btn-outline-primary"><%= link_to 'New Task', new_task_path %></button>
 <%end %>
